@@ -13,15 +13,16 @@
  */
 
 /* IMPORT LIBRARIES */
-
+// Not sure if there are any imported libraries tbh
 
 public class Main		// Main class to run all other .java files
 {
 	/* DATA FIELDS */
 	
+	
 	public static void main(String[] args)
 	{
-		
+		new Window("Wheel of Fortune");
 	}
 
 }
