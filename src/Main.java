@@ -4,12 +4,15 @@
  * 	Input: None. Only a starter file.
  * 	Output: Main file runs all other files project files.
  * 
- * 	Version: 0.1
+ * 	Version: 0.0.2
  * 	Last updated: 9/26/2019
- * 		Description of update:
+ * 		Work done:
  * 			- Added Main method and a simple output to command line to verify that java was indeed working on machine.
  * 			- Commented what needed to be done to file
  * 
+ * 	Update 9/28/2019
+ * 		Work done: 
+ * 			- Calls window object and gives String for title.
  */
 
 /* IMPORT LIBRARIES */
