@@ -20,6 +20,10 @@ import javax.swing.JTextArea;
 
 public class Window extends JFrame implements ActionListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/* DATA FIELDS */
 	JFrame frame;
 	JTextArea tb;
