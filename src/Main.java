@@ -1,4 +1,4 @@
-/*	Name: Daniel V Dalessandro
+/*	Name: Daniel V Dalessandro 
  * 	Description: This is the Main file class, and does nothing too special
  * 		*****DO NOT MAKE THIS FILE A CLUTTERED MESS*****
  * 	Input: None. Only a starter file.
