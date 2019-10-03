@@ -25,7 +25,7 @@ public class Main		// Main class to run all other .java files
 	
 	public static void main(String[] args)
 	{
-		new Window("Wheel of Fortune");
+		new Window();
 	}
 
 }
