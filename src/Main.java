@@ -22,10 +22,10 @@ public class Main		// Main class to run all other .java files
 {
 	/* DATA FIELDS */
 	
-	
 	public static void main(String[] args)
 	{
 		new Window();
+		new Player();
 	}
 
 }

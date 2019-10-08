@@ -10,33 +10,54 @@
  * 			- Created player file extending window for player information and manipulation
  * 			- Created backbone for player interaction through guessing letters
  * 
- * 
+ * 	Updated 10/7/2019
+ * 		Work done:
+ * 			- Changed this file from confusion to an object class
+ * 			- Class now represents the player and the Cpu that plays with person
+ * 			- Still needs work done to get getters/setters to work properly
+ * 			- All methods are static for some reason? It doesn't seem to bother anything though...
  */
-public class Player extends Window
+public class Player
 {
-
+	private static char letter;	// Letter input from input
+	private static int p1Money = 0;		// Players 1-3's money for the individual rounds
+	private static int p2Money = 0;
+	private static int p3Money = 0;
+	private static int p1TotalMoney = 0;	// Players 1-3's money for the total game so far
+	private static int p2TotalMoney = 0;
+	private static int p3TotalMoney = 0;
 	
-
-	public char playerInput(String input)	// User string input
+	public Player()
 	{
-		input.toUpperCase();		// Casts all input to upper case letters
-		letter = input.charAt(0);	// Letter input is first char of string
 		
-		/*		MAKE IF STATEMENT TO MAKE SURE THAT INPUT ISNT A NUMBER AND ONLY A LETTER
-		 * 		IF NOT A LETTER, MAKE USER TRY AGAIN.
-		if(letter )
-		{
-			
-		}
-		*/
-		
-		// If 
-		/*else*/ //if()
-		{
-			
-		}
-		
+	}
+	
+	public static int getp1Total()
+	{
+		p1TotalMoney = p1Money + p1TotalMoney;
+		return p1TotalMoney;
+	}
+	
+	public static int getp2Total()
+	{
+		p2TotalMoney = p2Money + p2TotalMoney;
+		return p2TotalMoney;
+	}
+	
+	public static int getp3Total()
+	{
+		p3TotalMoney = p3Money + p3TotalMoney;
+		return p3TotalMoney;
+	}
+	
+	public static char getChar()
+	{
 		return letter;
+	}
+	
+	public void getCPU()
+	{
+		
 	}
 	
 	// This method 
