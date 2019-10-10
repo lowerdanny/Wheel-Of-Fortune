@@ -44,15 +44,15 @@ public class Window implements ActionListener
 	final int HEIGHT = 800;
 	
 	JFrame frame = new JFrame();
-	
 	JLabel lblp1Bank = new JLabel("$" + Player.getp1Total());
 	JLabel lblp2Bank = new JLabel("$" + Player.getp2Total());
 	JLabel lblp3Bank = new JLabel("$" + Player.getp3Total());
-	
 	JLabel lblBankInfo = new JLabel("Player 1 total:           Player 2 total:          Player 3 total:");
 	JButton buyAVowel = new JButton("Buy a Vowel!");	
 	JLabel lblWheel = new JLabel();
-	//JLabel Hint = new JLabel(hint);
+	JLabel lblHint = new JLabel();
+	
+	int CurrentLevel = 0;
 	
 	// This array is the wheel information and depending what the random numbers when the wheel being spun, it corresponds to what
 	// the user gets the certain amount of money from the wheel
@@ -61,23 +61,19 @@ public class Window implements ActionListener
 	
 	
 	char CharPuzzleOne[] = 
-		{'T','H','I','S',				// Array 0-3
-		'I','S',						// Array 4-5
-		'A',							// Array 6
-		'P','U','Z','Z','L','E',		// Array 7-12
-		'E','X','A','M','P','L','E'};	// Array 13-19
+		{'E','L','O','N','M','U','S','K'};
 	char CharPuzzleTwo[] = 
-		{
-				
-		};
+		{'B','L','A','C','K','P','A','N','T','H','E','R'};
 	char CharPuzzleThree[] = 
-		{
-				
-		};
+		{'S','A','N','D','M','A','N','B','Y','M','E','T','A','L','L','I','C','A'};
 	
-	String Puzzle1 = "This is a puzzle example";	
-	String Puzzle2 = "";
-	String Puzzle3 = "";
+	String Puzzle1 = "Proper Name";	
+	String Puzzle2 = "Movie Title";
+	String Puzzle3 = "Song/Artist";
+	
+	String Puzzle1Answer = "ELON MUSK";
+	String Puzzle2Answer = "BLACK PANTHER";
+	String Puzzle3Answer = "SANDMAN BY METALLICA";
 	
 	// CONTRUCTOR //
 	public Window()
@@ -113,7 +109,6 @@ public class Window implements ActionListener
 		frame.add(lblWheel);
 		lblWheel.setIcon(new ImageIcon("Pics/Wheel.png"));
 		
-		
 		// Sets objects in certain areas of the frame object.
 		lblBankInfo.setBounds(50,25,300,50);
 		lblp1Bank.setBounds(50,40,50,50);
@@ -130,7 +125,7 @@ public class Window implements ActionListener
 		for(int i = 0; i < lettersGuessed.length; i++)
 		{
 			lettersGuessed[i] = false;
-			//System.out.println("number: " + i + " " + lettersGuessed[i]);
+			
 		}
 		
 		for(int i = 0; i < CharPuzzleOne.length; i++)
