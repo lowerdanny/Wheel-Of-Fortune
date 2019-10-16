@@ -27,5 +27,4 @@ public class Main		// Main class to run all other .java files
 		new Window();
 		new Player();
 	}
-
 }

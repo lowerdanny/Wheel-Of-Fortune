@@ -34,20 +34,56 @@ public class Player
 	
 	public static int getp1Total()
 	{
-		p1TotalMoney = p1Money + p1TotalMoney;
 		return p1TotalMoney;
 	}
 	
 	public static int getp2Total()
 	{
-		p2TotalMoney = p2Money + p2TotalMoney;
 		return p2TotalMoney;
 	}
 	
 	public static int getp3Total()
 	{
-		p3TotalMoney = p3Money + p3TotalMoney;
 		return p3TotalMoney;
+	}
+	
+	public static void setp1Total()
+	{
+		if(p1Money < 0)
+		{
+			
+		}
+		
+		else if(p1Money > 0)
+		{
+			p1TotalMoney = p1TotalMoney + p1Money;
+		}
+	}
+	
+	public static void setp2Total()
+	{
+		if(p2Money < 0)
+		{
+			
+		}
+		
+		else if(p2Money > 0)
+		{
+			p2TotalMoney = p2Money + p2TotalMoney;
+		}
+	}
+	
+	public static void setp3Total()
+	{
+		if(p3Money < 0)
+		{
+			
+		}
+		
+		else if(p3Money > 0)
+		{
+			p3TotalMoney = p3Money + p3TotalMoney;
+		}
 	}
 	
 	public static char getChar()
