@@ -47,6 +47,7 @@ public class Player
 		return p3TotalMoney;
 	}
 	
+	
 	public static void setp1Total()
 	{
 		if(p1Money < 0)
@@ -86,9 +87,38 @@ public class Player
 		}
 	}
 	
-	public static char getChar()
+	public static char getChar(String input)
 	{
-		return letter;
+		switch(letter)
+		{
+		   // case statements
+		   // values must be of same type of expression
+		   case 'A' :
+		       // Statements
+			   break; // break is optional
+		   case 'E' :
+			   // Statements
+			   break; // break is optional
+		   case 'I' :
+			   // Statements
+			   break; // break is optional
+		   case 'O' :
+			   // Statements
+			   break; // break is optional
+		   case 'U' :
+			   // Statements
+			   break; // break is optional
+		   case 'Y' :
+		       // Statements
+		       break; // break is optional
+		   
+		   // We can have any number of case statements
+		   // below is default statement, used when none of the cases is true. 
+		   // No break is needed in the default case.
+		   default : 
+		      // Statements
+		}
+		
 	}
 	
 	public void getCPU()

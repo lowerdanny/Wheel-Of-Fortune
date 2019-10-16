@@ -30,6 +30,8 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;		// Does actions based on user input
 import java.awt.event.ActionListener;	// Needed for button pressing
+import java.util.Random;
+import java.math.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;				// Button for the user to buy a vowel
@@ -43,55 +45,61 @@ public class Window implements ActionListener
 	final int WIDTH = 1200;
 	final int HEIGHT = 800;
 	JLabel 	lblA, lblB, lblC, lblD, lblE, lblF, lblG, lblH, lblI, lblJ, lblK, lblL, lblM, lblN, lblO, lblP, lblQ,
-			lblR, lblS, lblT, lblU, lblV, lblW, lblX, lblY, lblZ, lblGuessedLet, lblPuz1Sub, lblPuz2Sub, lblPuz3Sub;
-	JLabel 	puz1_1, puz1_2, puz1_3, puz1_4, puz1_5, puz1_6, puz1_7, puz1_8;
-	JLabel 	puz2_1, puz2_2, puz2_3, puz2_4, puz2_5, puz2_6, puz2_7, puz2_8, puz2_9, puz2_10, puz2_11, puz2_12;
-	JLabel 	puz3_1, puz3_2, puz3_3, puz3_4, puz3_5, puz3_6, puz3_7, puz3_8, puz3_9, puz3_10, 
-			puz3_11, puz3_12, puz3_13, puz3_14, puz3_15, puz3_16, puz3_17, puz3_18, puz3_19;
+			lblR, lblS, lblT, lblU, lblV, lblW, lblX, lblY, lblZ, lblGuessedLet, lblPuzSubject;
+	JLabel 	puz1, puz2, puz3, puz4, puz5, puz6, puz7, puz8, puz9, puz10, puz11, puz12;
+
 	JFrame 	frame = new JFrame();
 	JLabel lblp1Bank, lblp2Bank, lblp3Bank, lblBankInfo;
 	JButton buyAVowel = new JButton("Buy a Vowel!");
-	JButton solve = new JButton("Solve?");
+	JButton Solve = new JButton("Solve?");
 	JButton Spin = new JButton ("Spin the Wheel!");
 	JLabel lblWheel;
 	JLabel lblHint;
 	int CurrentLevel = 0;
+	char letter;
 	
-	boolean running = false;
-	
+	boolean run = false;	
+	private static boolean okConst = false;
+	private static boolean okVowel = false;
+
 	// the user gets the certain amount of money from the wheel
 	int WheelArr[] = 
 		{-1,800,350,450,700,300,600,500,300,600,300,500,800,550,400,300,900,500,300,900,-2,600,400,300 };
 	
 	String input;	// user input from JOptionPane
 	char CharPuzzleOne[] = 
-		{'E','L','O','N','M','U','S','K'};
+		{'E','L','O','N','M','U','S','K'};						// 8 chars total
 	char CharPuzzleTwo[] = 
-		{'B','L','A','C','K','P','A','N','T','H','E','R'};
+		{'B','L','A','C','K','P','A','N','T','H','E','R'};		// 12 chars total
 	char CharPuzzleThree[] = 
-		{'S','A','N','D','M','A','N','B','Y','M','E','T','A','L','L','I','C','A'};
+		{'A','N','T','H','E','M'};								// 6 chars total
 	
-	String Puz1Sub = "Proper Name";	
-	String Puz2Sub = "Movie Title";
-	String Puz3Sub = "Song/Artist";
+	String Puz1Sub = "Subject:                               Famous People";	
+	String Puz2Sub = "Subject:                               Movie Title";
+	String Puz3Sub = "Subject:                               Video Game Title";
 	String Puz1Ans = "ELON MUSK";
 	String Puz2Ans = "BLACK PANTHER";
-	String Puz3Ans = "SANDMAN BY METALLICA";
+	String Puz3Ans = "ANTHEM";
 	
 	// CONTRUCTOR //
 	public Window()
 	{
-		// Adds buttons to action listener (needed for pressing button)
+		//LevelOne();
+		// Adds buttons to action listener (needed for pressing buttons)
 		buyAVowel.addActionListener(this);
-		solve.addActionListener(this);
+		Solve.addActionListener(this);
+		Spin.addActionListener(this);
 		
 		init();		// Creates main window
 		create();	// Creates objects to be added to window 
 		add();		// Adds objects to window
 		set();		// Sets objects in window
 		
-		while(running)
+		while(!run)
 		{
+			LevelOne();
+			//LevelTwo();
+			//LevelThree();
 			
 		}
 		
@@ -120,6 +128,7 @@ public class Window implements ActionListener
 		lblWheel = new JLabel();
 		lblHint = new JLabel();
 		
+		lblPuzSubject = new JLabel();
 		lblGuessedLet = new JLabel("Guessed Letters:");
 		lblA = new JLabel("");
 		lblB = new JLabel("");
@@ -147,6 +156,20 @@ public class Window implements ActionListener
 		lblX = new JLabel("");
 		lblY = new JLabel("");
 		lblZ = new JLabel("");
+		
+		puz1 = new JLabel();
+		puz2 = new JLabel();
+		puz3 = new JLabel();
+		puz4 = new JLabel();
+		puz5 = new JLabel();
+		puz6 = new JLabel();
+		puz7 = new JLabel();
+		puz8 = new JLabel();
+		puz9 = new JLabel();
+		puz10 = new JLabel();
+		puz11 = new JLabel();
+		puz12 = new JLabel();
+
 	}
 	
 	public void add()
@@ -156,6 +179,8 @@ public class Window implements ActionListener
 		frame.add(lblp2Bank);
 		frame.add(lblp3Bank);
 		frame.add(buyAVowel);
+		frame.add(Solve);
+		frame.add(Spin);
 		frame.add(lblBankInfo);
 		frame.add(lblWheel);
 		frame.add(lblA);
@@ -185,7 +210,23 @@ public class Window implements ActionListener
 		frame.add(lblY);
 		frame.add(lblZ);
 		frame.add(lblGuessedLet);
+		frame.add(lblPuzSubject);
 		lblWheel.setIcon(new ImageIcon("Pics/Wheel.png"));
+		
+		frame.add(puz1);
+		frame.add(puz2);
+		frame.add(puz3);
+		frame.add(puz4);
+		frame.add(puz5);
+		frame.add(puz6);
+		frame.add(puz7);
+		frame.add(puz8);
+		frame.add(puz9);
+		frame.add(puz10);
+		frame.add(puz11);
+		frame.add(puz12);
+
+
 	}
 	
 	public void set()
@@ -196,6 +237,8 @@ public class Window implements ActionListener
 				lblp2Bank.setBounds(160,40,50,50);
 				lblp3Bank.setBounds(265,40,50,50);
 				buyAVowel.setBounds(500,400,110,50);
+				Solve.setBounds(610,400,110,50);
+				Spin.setBounds(720,400,150,50);
 				lblWheel.setBounds(50,100,400,400);
 				lblGuessedLet.setBounds(100, 650, 100, 50);
 				lblA.setBounds(100,685,20,20);
@@ -224,6 +267,79 @@ public class Window implements ActionListener
 				lblX.setBounds(560,685,20,20);
 				lblY.setBounds(580,685,20,20);
 				lblZ.setBounds(600,685,20,20);
+				lblPuzSubject.setBounds(800,100,500,40);
+				
+				puz1.setBounds(800,200,20,20);
+				puz2.setBounds(830,200,20,20);
+				puz3.setBounds(860,200,20,20);
+				puz4.setBounds(890,200,20,20);
+				puz5.setBounds(920,200,20,20);
+				puz6.setBounds(950,200,20,20);
+				puz7.setBounds(980,200,20,20);
+				puz8.setBounds(1010,200,20,20);
+				puz9.setBounds(1010,200,20,20);
+				puz10.setBounds(1040,200,20,20);
+				puz11.setBounds(1070,200,20,20);
+				puz12.setBounds(1100,200,20,20);
+	}
+	
+	public void LevelOne()
+	{
+		setOne();
+		/*
+		boolean flag = false;
+		while(!flag)
+		{
+			if(input == )
+			
+			flag = true;
+		}
+		*/
+		//breakOne();
+	}
+	public void setOne()
+	{
+		lblPuzSubject.setText(Puz1Sub);
+	}
+	public void breakOne()
+	{
+		lblPuzSubject.setText("");
+	}
+	
+	public void LevelTwo()
+	{
+		boolean test = false;
+		//setTwo();
+		while(test)
+		{
+			System.out.println("This is a test");
+			if(test == false)
+			{
+				break;
+			}
+		}
+		breakTwo();
+	}
+	public void setTwo()
+	{
+		
+	}
+	public void breakTwo()
+	{
+		
+	}
+	
+	public void LevelThree()
+	{
+		
+	}
+	public void setThree()
+	{
+		
+	}
+	public void breakThree()
+	{
+		
 	}
 	
 	public void setUp()
@@ -243,7 +359,7 @@ public class Window implements ActionListener
 		{
 			input = JOptionPane.showInputDialog("Please guess a Vowel.");
 		}
-		else if (e.getSource() == solve)
+		else if (e.getSource() == Solve)
 		{
 			input = JOptionPane.showInputDialog("Please Solve the Puzzle:");
 			if (CurrentLevel == 0)
@@ -290,6 +406,30 @@ public class Window implements ActionListener
 				}
 				JOptionPane.showMessageDialog(null, "Thank you for playing! You made a total of $" + Player.getp1Total());
 			}
+			
+		}
+		else if(e.getSource() == Spin)
+		{
+			Random R = new Random();
+			int r = R.nextInt(24);
+			JOptionPane.showMessageDialog(null, "The Wheel Landed on: $" + WheelArr[r]);
+			do
+			{
+				input = JOptionPane.showInputDialog("Please guess a constonant");
+				letter = Player.getChar(input);
+				
+			}
+			while(okConst);
+				
+			if(WheelArr[r] == -1)
+			{
+				System.out.println("You lost a turn!");
+			}
+			else if(WheelArr[r] == -1)
+			{
+				System.out.println("You're Bankrupt! You lose all your money!");
+			}
+			
 			
 		}
 	}
