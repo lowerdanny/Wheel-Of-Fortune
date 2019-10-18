@@ -87,8 +87,9 @@ public class Player
 		}
 	}
 	
-	public static char getChar(String input)
+	public static char getVowelChar(String input)
 	{
+		
 		switch(letter)
 		{
 		   // case statements
@@ -118,6 +119,11 @@ public class Player
 		   default : 
 		      // Statements
 		}
+		
+	}
+	
+	public static char getConstChar(String input)
+	{
 		
 	}
 	
