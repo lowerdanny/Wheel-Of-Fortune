@@ -1,143 +1,73 @@
-/*	Player.java
- * 
- * 	Version 0.0.1	
- * 
- * Description: This class does the functions that are required to change the text of the labels
- * 				of the window class. This class also serves to do math for the total money gained per
- * 				round and the total bank per player.
- * 	Updated 10/3/2019
- * 		Work done:
- * 			- Created player file extending window for player information and manipulation
- * 			- Created backbone for player interaction through guessing letters
- * 
- * 	Updated 10/7/2019
- * 		Work done:
- * 			- Changed this file from confusion to an object class
- * 			- Class now represents the player and the Cpu that plays with person
- * 			- Still needs work done to get getters/setters to work properly
- * 			- All methods are static for some reason? It doesn't seem to bother anything though...
- */
-public class Player
-{
-	private static char letter;	// Letter input from input
-	private static int p1Money = 0;		// Players 1-3's money for the individual rounds
-	private static int p2Money = 0;
-	private static int p3Money = 0;
-	private static int p1TotalMoney = 0;	// Players 1-3's money for the total game so far
-	private static int p2TotalMoney = 0;
-	private static int p3TotalMoney = 0;
-	
-	public Player()
-	{
-		
-	}
-	
-	public static int getp1Total()
-	{
-		return p1TotalMoney;
-	}
-	
-	public static int getp2Total()
-	{
-		return p2TotalMoney;
-	}
-	
-	public static int getp3Total()
-	{
-		return p3TotalMoney;
-	}
-	
-	
-	public static void setp1Total()
-	{
-		if(p1Money < 0)
-		{
-			
-		}
-		
-		else if(p1Money > 0)
-		{
-			p1TotalMoney = p1TotalMoney + p1Money;
-		}
-	}
-	
-	public static void setp2Total()
-	{
-		if(p2Money < 0)
-		{
-			
-		}
-		
-		else if(p2Money > 0)
-		{
-			p2TotalMoney = p2Money + p2TotalMoney;
-		}
-	}
-	
-	public static void setp3Total()
-	{
-		if(p3Money < 0)
-		{
-			
-		}
-		
-		else if(p3Money > 0)
-		{
-			p3TotalMoney = p3Money + p3TotalMoney;
-		}
-	}
-	
-	public static char getVowelChar(String input)
-	{
-		
-		switch(letter)
-		{
-		   // case statements
-		   // values must be of same type of expression
-		   case 'A' :
-		       // Statements
-			   break; // break is optional
-		   case 'E' :
-			   // Statements
-			   break; // break is optional
-		   case 'I' :
-			   // Statements
-			   break; // break is optional
-		   case 'O' :
-			   // Statements
-			   break; // break is optional
-		   case 'U' :
-			   // Statements
-			   break; // break is optional
-		   case 'Y' :
-		       // Statements
-		       break; // break is optional
-		   
-		   // We can have any number of case statements
-		   // below is default statement, used when none of the cases is true. 
-		   // No break is needed in the default case.
-		   default : 
-		      // Statements
-		}
-		
-	}
-	
-	public static char getConstChar(String input)
-	{
-		
-	}
-	
-	public void getCPU()
-	{
-		
-	}
-	
-	// This method 
-	public char cpuChoice()
-	{
-		char a = 'a';
-		
-		return a;
-	}
-}
 
+public class Player 
+{
+	/* DECLARATIONS/DATA FIELDS */
+    private String playerName;
+    private int totalBalance;
+    private int roundBalance;
+    private boolean myTurn;
+    
+    // Constructor that doesn't do anything
+    public Player(){}
+    
+    // Takes String and makes it the new player's name
+    public void setName(String n)
+    {
+        playerName = n;
+    }
+    
+    // Getter for receiving player's name
+    public String getName()
+    {
+        return playerName;
+    }
+    
+    // Method to reset the balance to 0 
+    public void newGame()
+    {
+        totalBalance = 0;
+        roundBalance = 0;
+    }
+    
+    // Method to add money to round balance
+    public void addrBal(int rb)
+    {
+       roundBalance += rb;
+    }
+    
+    // Method to add the round balance to the total balance
+    public void addTBal(int tb)
+    {
+        totalBalance += roundBalance;
+    }
+    
+    // Getter to receive the total balance
+    public int getTBal()
+    {
+        return totalBalance;
+    }
+    
+    // Getter to receive the round balance
+    public int getRBal()
+    {
+        return roundBalance;
+    }
+    
+    // Sets round balance to 0 for the start of a new round
+    public void bankrupt()
+    {
+        roundBalance = 0;
+    }
+    
+    // Sets the boolean variable to tell whose turn it is
+    public void isTurn(boolean t)
+    {
+        myTurn = t;
+    }
+    
+    // Returns true or false to tell whose turn it is
+    public boolean getTurn()
+    {
+        return myTurn;
+    }
+}
