@@ -23,6 +23,7 @@ public class WheelOfFortune
     static char chGuess;
     static String genre;
     static char[] puzzle;
+    static String strPuzzle;
     static char[] hidden;
     static int playerAmount;
     static Random randNum = new Random();
@@ -274,8 +275,8 @@ public class WheelOfFortune
                         case "p":System.out.println("What is your guess?");
                                  strGuess = scMain1.next();
                                  strGuess = strGuess.toUpperCase();
-                                 String strPuzzle = puzzle.toString();
-                                 //finalGuess = strGuess.toCharArray();
+                                 System.out.println("The final guess is: " + strGuess);
+                                 System.out.println("The puzzle string is: " + strPuzzle);
                                  if (isFinalGuessCorrect(strPuzzle, strGuess))
                                  {
                                      System.out.println("Correct!");
@@ -373,10 +374,10 @@ public class WheelOfFortune
     }
     
     // Method handles final guess and String of current puzzle
-    private static boolean isFinalGuessCorrect(String strPuz, String fGuess)
+    private static boolean isFinalGuessCorrect(String strPuz, String finalGuess)
     {
     	boolean correct;
-		if(strPuz == fGuess)
+		if(strPuz.equals(finalGuess))
 		{
 			correct = true;
 		}
@@ -405,115 +406,163 @@ public class WheelOfFortune
     }
     
 	// Random numbers to designate what category and what puzzle is next
-    public static void newPuzz()
-    {
-        int puzCat = 0;
-        puzCat = randNum.nextInt(25);
-        switch(puzCat)
-        {
-            case 0: puzzle = phraseToArray(before_and_after[0]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Before and After"; 
-                break;
-            case 1: puzzle = phraseToArray(before_and_after[1]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Before and After"; 
-                break;
-            case 2: puzzle = phraseToArray(before_and_after[2]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Before and After"; 
-                break;
-            case 3: puzzle = phraseToArray(before_and_after[3]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Before and After"; 
-                break;
-            case 4: puzzle = phraseToArray(before_and_after[4]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Before and After"; 
-                break;
-            case 5: puzzle = phraseToArray(events[0]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Events"; 
-                break;
-            case 6: puzzle = phraseToArray(events[1]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Events";
-                break;
-            case 7: puzzle = phraseToArray(events[2]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Events";
-                break;
-            case 8: puzzle = phraseToArray(events[3]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Events";
-                break;
-            case 9: puzzle = phraseToArray(events[4]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Events";
-                break;
-            case 10: puzzle = phraseToArray(movie_title[0]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Movie Title";
-                break;
-            case 11: puzzle = phraseToArray(movie_title[1]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Movie Title";
-                break;
-            case 12: puzzle = phraseToArray(movie_title[2]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Movie Title";
-                break;
-            case 13: puzzle = phraseToArray(movie_title[3]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Movie Title";
-                break;
-            case 14: puzzle = phraseToArray(movie_title[4]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "Movie Title";
-                break;
-            case 15: puzzle = phraseToArray(on_the_map[0]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "On the Map";
-                break;
-            case 16: puzzle = phraseToArray(on_the_map[1]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "On the Map";
-                break;
-            case 17: puzzle = phraseToArray(on_the_map[2]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "On the Map";
-                break;
-            case 18: puzzle = phraseToArray(on_the_map[3]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "On the Map";
-                break;
-            case 19: puzzle = phraseToArray(on_the_map[4]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "On the Map";
-                break;
-            case 20: puzzle = phraseToArray(what_are_you_doing[0]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "What are you Doing?";
-                break;
-            case 21: puzzle = phraseToArray(what_are_you_doing[1]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "What are you Doing?";
-                break;
-            case 22: puzzle = phraseToArray(what_are_you_doing[2]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "What are you Doing?";
-                break;
-            case 23: puzzle = phraseToArray(what_are_you_doing[3]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "What are you Doing?";
-                break;
-            case 24: puzzle = phraseToArray(what_are_you_doing[4]);
-                    hidden = phraseArrayToBlank(puzzle);
-                    genre = "What are you Doing?";
-                break;
-        }
-        
-    }
+	public static void newPuzz() {
+		int puzCat = 0;
+		puzCat = randNum.nextInt(25);
+		switch (puzCat) {
+		case 0:
+			strPuzzle = before_and_after[0];
+			puzzle = phraseToArray(before_and_after[0]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Before and After";
+			break;
+		case 1:
+			strPuzzle = before_and_after[1];
+			puzzle = phraseToArray(before_and_after[1]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Before and After";
+			break;
+		case 2:
+			strPuzzle = before_and_after[2];
+			puzzle = phraseToArray(before_and_after[2]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Before and After";
+			break;
+		case 3:
+			strPuzzle = before_and_after[3];
+			puzzle = phraseToArray(before_and_after[3]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Before and After";
+			break;
+		case 4:
+			strPuzzle = before_and_after[4];
+			puzzle = phraseToArray(before_and_after[4]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Before and After";
+			break;
+		case 5:
+			strPuzzle = events[0];
+			puzzle = phraseToArray(events[0]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Events";
+			break;
+		case 6:
+			strPuzzle = events[1];
+			puzzle = phraseToArray(events[1]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Events";
+			break;
+		case 7:
+			strPuzzle = events[2];
+			puzzle = phraseToArray(events[2]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Events";
+			break;
+		case 8:
+			strPuzzle = events[3];
+			puzzle = phraseToArray(events[3]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Events";
+			break;
+		case 9:
+			strPuzzle = events[4];
+			puzzle = phraseToArray(events[4]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Events";
+			break;
+		case 10:
+			strPuzzle = movie_title[0];
+			puzzle = phraseToArray(movie_title[0]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Movie Title";
+			break;
+		case 11:
+			strPuzzle = movie_title[1];
+			puzzle = phraseToArray(movie_title[1]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Movie Title";
+			break;
+		case 12:
+			strPuzzle = movie_title[2];
+			puzzle = phraseToArray(movie_title[2]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Movie Title";
+			break;
+		case 13:
+			strPuzzle = movie_title[3];
+			puzzle = phraseToArray(movie_title[3]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Movie Title";
+			break;
+		case 14:
+			strPuzzle = movie_title[4];
+			puzzle = phraseToArray(movie_title[4]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "Movie Title";
+			break;
+		case 15:
+			strPuzzle = on_the_map[0];
+			puzzle = phraseToArray(on_the_map[0]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "On the Map";
+			break;
+		case 16:
+			strPuzzle = on_the_map[1];
+			puzzle = phraseToArray(on_the_map[1]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "On the Map";
+			break;
+		case 17:
+			strPuzzle = on_the_map[2];
+			puzzle = phraseToArray(on_the_map[2]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "On the Map";
+			break;
+		case 18:
+			strPuzzle = on_the_map[3];
+			puzzle = phraseToArray(on_the_map[3]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "On the Map";
+			break;
+		case 19:
+			strPuzzle = on_the_map[4];
+			puzzle = phraseToArray(on_the_map[4]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "On the Map";
+			break;
+		case 20:
+			strPuzzle = what_are_you_doing[0];
+			puzzle = phraseToArray(what_are_you_doing[0]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "What are you Doing?";
+			break;
+		case 21:
+			strPuzzle = what_are_you_doing[1];
+			puzzle = phraseToArray(what_are_you_doing[1]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "What are you Doing?";
+			break;
+		case 22:
+			strPuzzle = what_are_you_doing[2];
+			puzzle = phraseToArray(what_are_you_doing[2]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "What are you Doing?";
+			break;
+		case 23:
+			strPuzzle = what_are_you_doing[3];
+			puzzle = phraseToArray(what_are_you_doing[3]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "What are you Doing?";
+			break;
+		case 24:
+			strPuzzle = what_are_you_doing[4];
+			puzzle = phraseToArray(what_are_you_doing[4]);
+			hidden = phraseArrayToBlank(puzzle);
+			genre = "What are you Doing?";
+			break;
+		}
+
+	}
     
     // Convert phrase (string) to array (Char array) used for guessing
     public static char[] phraseToArray(String newPhrase)
